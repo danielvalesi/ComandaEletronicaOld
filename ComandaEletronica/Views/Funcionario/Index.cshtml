@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Funcionário - Lista";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col m6">
+            <h2>Funcionario</h2>
+        </div>
+        <div class="col m6">
+            <br>
+            <br>
+            <a href="/funcionario/create" class="btn right light-blue darken-3">Cadastrar funcionario</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <form action="/funcionario/filter" method="post" class="col m12">
+            <nav>
+                <div class="nav-wrapper">
+                
+                        <div class="input-field">
+                            <input id="search" name="nome" type="search" placeholder="Pesquisar pelo nome..." required>
+                            <label for="search"><i class="material-icons">search</i></label>
+                            <i class="material-icons">close</i>
+                        </div>
+                  
+                </div>
+            </nav>
+        </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="table-responsive">
+        <table class="table striped bordered highlight">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var funcionario in Model)
+            {
+                    <tr>
+                        <td>@funcionario.IdFuncionario</td>
+                        <td>@funcionario.Nome</td>
+                        <td>@funcionario.Descricao</td>
+                        <td>@funcionario.Preco</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="/funcionario/update/@funcionario.IdFuncionario" class="btn btn-xs btn-default">
+                                    <span class="glyphicon glyphicon-edit"></span> Editar
+                                </a>
+                                <a href="/funcionario/delete/@funcionario.IdFuncionario" class="btn btn-xs btn-danger red darken-3">
+                                    <span class="glyphicon glyphicon-trash"></span> Apagar
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

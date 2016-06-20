@@ -1,0 +1,84 @@
+﻿@using ComandaEletronica.Entity;
+<!DOCTYPE html>
+
+<html>
+<head>    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>@ViewBag.Title</title>
+
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="~/content/materialize/css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="~/content/style.css" media="screen,projection" />
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <meta name="description" content="The description of my page" />
+</head>
+<body>
+
+    <nav id="bar">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">BIZNE$</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">Javascript</a></li>
+                <li><a href="mobile.html">Mobile</a></li>                
+            </ul>
+
+            Bem vindo, @(((Funcionario)Session["funcionario"]).Nome)
+        </div>
+    </nav>
+
+
+    <div class="row no-margin">
+
+        <div class="blue-grey darken-3 white-text" id="menu">
+
+            <ul class="">
+                <li><a href="/dashboard/index"><i class="material-icons tiny">av_timer</i> Dashboard</a></li>
+                <li><a href="/produto/index"><i class="material-icons tiny">loyalty</i> Produtos</a>
+                    <ul>
+                        <li><a href="/produto/index">Todos os Produtos</a></li>
+                        <li><a href="/produto/create">Novo Produto</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/funcionario/index"><i class="material-icons tiny">assignment_ind</i> Funcionários</a>
+                    <ul>
+                        <li><a href="/funcionario/index">Todos os Funcionários</a></li>
+                        <li><a href="/funcionario/create">Novo Funcionário</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/cliente/index"><i class="material-icons tiny">supervisor_account</i> Clientes</a>
+                    <ul>
+                        <li><a href="/cliente/index">Todos os Clientes</a></li>
+                        <li><a href="/cliente/create">Novo Cliente</a></li>
+                    </ul>
+                </li>
+                <li><a href="/login/index"><i class="material-icons tiny">power_settings_new</i> Sair</a></li>
+            </ul>
+            
+
+
+        </div>
+
+        <div id="conteudo">
+            
+            
+            
+            @RenderBody()
+
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/scripts/materialize/materialize.min.js"></script>
+    <script type="text/javascript" src="~/scripts/main.js"></script>
+</body>
+</html>
