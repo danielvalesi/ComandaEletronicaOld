@@ -66,8 +66,8 @@ namespace ComandaEletronica.Models
                 f.Senha = (string)reader["Senha"];
                 f.Cpf = (string)reader["Cpf"];
                 f.Cargo = (string)reader["Cargo"];
-                f.HorarioEntrada = (string)reader["HorarioEntrada"];
-                f.HorarioSaida = (string)reader["HorarioSaida"];
+                f.HorarioEntrada = (DateTime)reader["HorarioEntrada"];
+                f.HorarioSaida = (DateTime)reader["HorarioSaida"];
                 
                 lista.Add(f);
             }
