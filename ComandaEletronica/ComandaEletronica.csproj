@@ -213,6 +213,7 @@
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\PedidoModel.cs" />
     <Compile Include="Models\ProdutoModel.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -247,6 +248,7 @@
     <Content Include="Views\Item\Create.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
     <Content Include="Views\Item\Update.cshtml" />
+    <Content Include="Views\Dashboard\cliente.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

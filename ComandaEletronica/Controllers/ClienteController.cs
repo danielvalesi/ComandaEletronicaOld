@@ -78,7 +78,7 @@ namespace ComandaEletronica.Controllers
             e.Cpf = form["cpf"];
 
 
-            e.Pessoa_id = int.Parse(form["pessoa_id"]);
+            e.Id = int.Parse(form["pessoa_id"]);
 
 
             using (ClienteModel model = new ClienteModel())

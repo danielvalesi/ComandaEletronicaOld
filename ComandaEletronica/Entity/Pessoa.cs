@@ -23,9 +23,9 @@ namespace ComandaEletronica.Entity
 
         public string Email { get; set; }
 
-        public decimal Senha { get; set; }
+        public string Senha { get; set; }
 
-        public decimal Cpf { get; set; }
+        public string Cpf { get; set; }
 
     }
 }

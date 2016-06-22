@@ -33,6 +33,9 @@ namespace ComandaEletronica.Entity
         public StatusItem Status { get; set; }
 
 
+        public Produto Produto { get; set; }
+
+
 
     }
 }

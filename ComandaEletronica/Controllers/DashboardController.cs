@@ -8,8 +8,14 @@ namespace ComandaEletronica.Controllers
 {
     public class DashboardController : Controller
     {
-        // GET: Dashboard
+        // GET: Dashboard do Funcionario
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        // GET: Dashboard do Cliente
+        public ActionResult Cliente()
         {
             return View();
         }

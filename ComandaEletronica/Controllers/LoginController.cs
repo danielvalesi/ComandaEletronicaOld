@@ -19,27 +19,29 @@ namespace ComandaEletronica.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection form)
         {
-            using(FuncionarioModel Model = new FuncionarioModel())
+            using(UsuarioModel Model = new UsuarioModel())
             {
-                Funcionario e = Model.Read(form["email"], form["senha"]);
+                Pessoa p = Model.Read(form["email"], form["senha"]);
 
-                if (e == null)
+                if (p == null)
                 {
                     return RedirectToAction("index");
                 } else
                 {
-                    Session["funcionario"] = e;
-                    return RedirectToAction("index", "dashboard");
 
-                    /* FAZER LOGINS PARA CADA TIPO DE USUARIO
-                    Session["conta"] = e;
-                    return RedirectToAction("index", "dashboard");
-                    */
+                    Session["pessoa"] = p;
 
-                    /* // Retornando o funcionario 
-                    Funcionario x = (Funcionario)Session["funcionario"];
-                    x.Nome;
-                    */
+                    if (p is Funcionario)
+                    {
+                        
+                        return RedirectToAction("index", "dashboard");
+                    }
+                    else
+                    {
+                        
+                        return RedirectToAction("cliente", "Dashboard");
+                    }
+                    
 
                 }
             } 

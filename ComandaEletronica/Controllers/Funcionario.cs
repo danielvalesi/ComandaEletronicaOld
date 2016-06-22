@@ -78,7 +78,7 @@ namespace ComandaEletronica.Controllers
             e.Senha = form["senha"];
 
 
-            e.Pessoa_id = int.Parse(form["pessoa_id"]);
+            e.Id = int.Parse(form["pessoa_id"]);
 
 
             using (FuncionarioModel model = new FuncionarioModel())

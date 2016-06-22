@@ -39,7 +39,7 @@ namespace ComandaEletronica.Models
             List<Cliente> lista = new List<Cliente>();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "select * from ClientesVIP";
+            cmd.CommandText = "select * from ClientesVIP, Pessoas WHERE Pessoas.id = ClientesVIP.pessoa_id";
             cmd.Connection = conn;
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -48,7 +48,7 @@ namespace ComandaEletronica.Models
             {
                 Cliente cliente = new Cliente();
                 //cliente.ClienteId = reader.GetInt32(0);
-                cliente.Pessoa_id = (int)reader["pessoa_id"];
+                cliente.Pessoa_id = (int)reader["Pessoa_id"];
                 cliente.Nome = (string)reader["Nome"];
                 cliente.Email = (string)reader["Email"];
                 cliente.Cpf = (string)reader["Cpf"];
@@ -96,15 +96,15 @@ namespace ComandaEletronica.Models
 
         // BUSCA POR ID
 
-        internal Cliente Read(int pessoa_id)
+        internal Cliente Read(int id)
         {
             Cliente cliente = new Cliente();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = @"select * from Cliente, Pessoas where cliente.pessoa_id = @pessoa_id AND pessoa.pessoa_id = cliente.pessoa_id";
+            cmd.CommandText = @"select * from Cliente, Pessoas where cliente.id = @id AND pessoa.id = cliente.id";
             cmd.Connection = conn;
 
-            cmd.Parameters.AddWithValue("@pessoa_id", pessoa_id);
+            cmd.Parameters.AddWithValue("@id", id);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -135,24 +135,24 @@ namespace ComandaEletronica.Models
             cmd.Parameters.AddWithValue("@nome", e.Nome);
             cmd.Parameters.AddWithValue("@email", e.Email);
             cmd.Parameters.AddWithValue("@cpf", e.Cpf);
-            cmd.Parameters.AddWithValue("@pessoa_id", e.Pessoa_id);
+            cmd.Parameters.AddWithValue("@id", e.Id);
 
             cmd.ExecuteNonQuery();
 
         }
 
         // APAGAR CLIENTE
-        public void Delete (int pessoa_id)
+        public void Delete (int id)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = @"
                     DELETE from ClientesVIP
                     WHERE
-                    pessoa_id = @pessoa_id;
+                    id = @id;
             ";
 
-            cmd.Parameters.AddWithValue("@pessoa_id", pessoa_id);
+            cmd.Parameters.AddWithValue("@id", id);
 
             cmd.ExecuteNonQuery();
 
