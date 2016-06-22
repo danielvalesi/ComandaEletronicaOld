@@ -151,7 +151,7 @@ namespace ComandaEletronica.Models
             cmd.Parameters.AddWithValue("@qtd", e.Qtd);
             cmd.Parameters.AddWithValue("@preco", e.Preco);
             cmd.Parameters.AddWithValue("@dataEntrega", e.DataEntrega);
-            cmd.Parameters.AddWithValue("@status", e.Status);
+            cmd.Parameters.AddWithValue("@status", (int)e.Status);
 
             cmd.ExecuteNonQuery();
 

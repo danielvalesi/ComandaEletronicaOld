@@ -7,7 +7,7 @@ namespace ComandaEletronica.Models
 {
     public enum StatusConta
     {
-        Fechada = 1,
-        Aberta = 2
+        Fechada = 0,
+        Aberta = 1
     }
 }

@@ -188,6 +188,7 @@
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\LocalizacaoController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Item.cs" />
     <Compile Include="Entity\Pedido.cs" />
     <Compile Include="Entity\Funcionario.cs" />
