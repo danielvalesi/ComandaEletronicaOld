@@ -19,11 +19,10 @@ namespace ComandaEletronica.Entity
             set { idCliente = value; }
         }
 
-        public string Nome { get; set; }
+        public string PorcentagemDesconto { get; set; }        
 
-        public string Descricao { get; set; }
 
-        public decimal Preco { get; set; }
+        }
 
     }
 }
