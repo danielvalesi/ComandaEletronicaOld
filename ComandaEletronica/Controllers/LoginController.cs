@@ -38,7 +38,8 @@ namespace ComandaEletronica.Controllers
                     }
                     else
                     {
-                        
+                        Session["carrinho"] = new Conta();
+
                         return RedirectToAction("cliente", "Dashboard");
                     }
                     
