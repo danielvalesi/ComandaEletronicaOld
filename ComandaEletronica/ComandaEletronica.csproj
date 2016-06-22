@@ -181,12 +181,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Funcionario.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ItensController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\LocalizacaoController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Entity\Item.cs" />
     <Compile Include="Entity\Pedido.cs" />
     <Compile Include="Entity\Funcionario.cs" />
     <Compile Include="Entity\Cliente.cs" />
@@ -198,9 +200,11 @@
     </Compile>
     <Compile Include="Models\ContaModel.cs" />
     <Compile Include="Models\FormaPagamento.cs" />
+    <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\LocalizacaoModel.cs" />
     <Compile Include="Models\StatusLocalizacao.cs" />
     <Compile Include="Models\StatusConta.cs" />
+    <Compile Include="Models\StatusItem.cs" />
     <Compile Include="Models\StatusPedido.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\FuncionarioModel.cs" />
@@ -239,6 +243,9 @@
     <Content Include="Views\Localizacao\Create.cshtml" />
     <Content Include="Views\Localizacao\Index.cshtml" />
     <Content Include="Views\Localizacao\Update.cshtml" />
+    <Content Include="Views\Item\Create.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
+    <Content Include="Views\Item\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

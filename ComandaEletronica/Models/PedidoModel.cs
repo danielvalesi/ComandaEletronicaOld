@@ -46,14 +46,14 @@ namespace ComandaEletronica.Models
 
             while (reader.Read())
             {
-                Pedido produto = new Pedido();
+                Pedido pedido = new Pedido();
                 
-                produto.Id = (int)reader["Conta_Id"];
-                produto.Status = (StatusPedido)reader["Status"];
-                produto.DataEntrega = (DateTime)reader["DataEntrega"];
+                pedido.Id = (int)reader["Conta_Id"];
+                pedido.Status = (StatusPedido)reader["Status"];
+                pedido.DataEntrega = (DateTime)reader["DataEntrega"];
 
 
-                lista.Add(produto);
+                lista.Add(pedido);
             }
 
 
@@ -76,14 +76,14 @@ namespace ComandaEletronica.Models
 
             while (reader.Read())
             {
-                Pedido produto = new Pedido();
+                Pedido pedido = new Pedido();
                 //cliente.ClienteId = reader.GetInt32(0);
-                produto.Id = (int)reader["Conta_Id"];
-                produto.Status = (StatusPedido)reader["Status"];
-                produto.DataEntrega = (DateTime)reader["DataEntrega"];
+                pedido.Id = (int)reader["Conta_Id"];
+                pedido.Status = (StatusPedido)reader["Status"];
+                pedido.DataEntrega = (DateTime)reader["DataEntrega"];
 
 
-                lista.Add(produto);
+                lista.Add(pedido);
             }
 
             return lista;
@@ -94,7 +94,7 @@ namespace ComandaEletronica.Models
 
         internal Pedido Read(int id)
         {
-            Pedido produto = new Pedido();
+            Pedido pedido = new Pedido();
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = @"select * from Pedidos where id = @id";
@@ -106,12 +106,12 @@ namespace ComandaEletronica.Models
 
             if (reader.Read())
             {
-                produto.Id = (int)reader["Conta_Id"];
-                produto.Status = (StatusPedido)reader["Status"];
-                produto.DataEntrega = (DateTime)reader["DataEntrega"];
+                pedido.Id = (int)reader["Conta_Id"];
+                pedido.Status = (StatusPedido)reader["Status"];
+                pedido.DataEntrega = (DateTime)reader["DataEntrega"];
             }
 
-            return produto;
+            return pedido;
 
         }
 
