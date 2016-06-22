@@ -6,12 +6,12 @@ GO
 
 CREATE TABLE Pessoas
 (
-	id		int				not null primary key identity,
-	nome	varchar(50)		not null,
-	email	varchar(100)	not null unique,
-	senha	varchar(32)		not null,
-	cpf		varchar(16)		not null unique,
-	imagem	varchar(max)		null
+	pessoa_id	int				not null primary key identity,
+	nome		varchar(50)		not null,
+	email		varchar(100)	not null unique,
+	senha		varchar(32)		not null,
+	cpf			varchar(16)		not null unique,
+	imagem		varchar(max)		null
 )
 GO
 

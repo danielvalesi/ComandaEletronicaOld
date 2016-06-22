@@ -159,4 +159,26 @@ namespace ComandaEletronica.Models
         }
 
         }
+
+    public decimal gastos (int cliente)
+    {
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandText = @"select	sum(co.valor)	Gastos
+
+                            from Pessoas p, ClientesVIP c, Contas co
+
+                            where	p.id = c.pessoa_id and
+		                    c.pessoa_id = co.cliente_id
+
+                            group by c.pessoa_id, p.nome";
+        SqlDataReader reader = cmd.ExecuteReader();
+        if (reader.Read())
+        {
+            return (decimal)reader["Gastos"];
+        }
+        // cmd.Parameters.AddWithValue("@idCliente", desconto);
+        return 0;        
+
+    }
     }
