@@ -169,7 +169,8 @@ namespace ComandaEletronica.Models
                             from Pessoas p, ClientesVIP c, Contas co
 
                             where	p.id = c.pessoa_id and
-		                    c.pessoa_id = co.cliente_id
+		                    c.pessoa_id = co.cliente_id and
+                            c.dataFechamento is not null
 
                             group by c.pessoa_id, p.nome";
         SqlDataReader reader = cmd.ExecuteReader();

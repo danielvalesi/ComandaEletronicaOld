@@ -35,6 +35,27 @@ namespace ComandaEletronica.Models
 
         }
 
+
+        public void Update(Conta e)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandText = @"
+                    update Contas set                    
+                    
+                    dataFechamento = @dataFechamento,  status = @status, formaPagamento = @formaPagamento
+                    where
+                        id = @id";
+
+          
+            cmd.Parameters.AddWithValue("@dataFechamento", e.DataFechamento);
+            cmd.Parameters.AddWithValue("@valor", e.Valor);
+            cmd.Parameters.AddWithValue("@status", e.StatusConta);
+            cmd.Parameters.AddWithValue("@formaPagamento", e.FormaPagamento);
+
+            cmd.ExecuteNonQuery();
+
+        }
         // LISTANDO CONTAS (SELECT)
 
         public List<Conta> Read()
