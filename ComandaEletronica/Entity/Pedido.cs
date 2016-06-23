@@ -9,6 +9,12 @@ namespace ComandaEletronica.Entity
 {
     public class Pedido
     {
+
+        public Pedido()
+        {
+            Itens = new List<Item>();
+        }
+
         // campo:
         private int id;
 
@@ -25,6 +31,8 @@ namespace ComandaEletronica.Entity
         public StatusPedido Status { get; set; }
 
         public DateTime DataEntrega { get; set; }
+
+        public List<Item> Itens { get; set; }
 
         
 

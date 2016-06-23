@@ -9,6 +9,13 @@ namespace ComandaEletronica.Entity
 {
     public class Conta
     {
+        //
+
+        public Conta()
+        {
+            Pedidos = new List<Pedido>();
+        }
+
         // campo:
         private int id;
 
@@ -25,13 +32,17 @@ namespace ComandaEletronica.Entity
         
         public DateTime DataAbertura { get; set; }
         
-        public DateTime DataFechamento { get; set; }
+        public DateTime? DataFechamento { get; set; }
         
         public decimal Valor { get; set; }
         
-        public StatusConta StatusConta { get; set; }
+        public StatusConta Status { get; set; }
         
         public FormaPagamento FormaPagamento { get; set; }
+
+        public List<Pedido> Pedidos  { get; set; }
+
+
         
         
 

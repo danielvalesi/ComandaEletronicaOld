@@ -52,7 +52,7 @@ namespace ComandaEletronica.Controllers
             e.DataAbertura = DateTime.Parse(form["dataAbertura"]);
             e.DataFechamento = DateTime.Parse(form["dataFechamento"]);
             e.Valor = decimal.Parse(form["valor"]);
-            e.StatusConta = StatusConta.Fechada;
+            e.Status = StatusConta.Fechada;
             e.FormaPagamento = FormaPagamento.Dinheiro;
             
             
@@ -83,7 +83,7 @@ namespace ComandaEletronica.Controllers
             e.Cliente_id = int.Parse(form["cliente_id"]);
             e.DataAbertura = DateTime.Parse(form["dataAbertura"]);
             e.Valor = decimal.Parse(form["valor"]);
-            e.StatusConta = StatusConta.Fechada;
+            e.Status = StatusConta.Fechada;
             e.FormaPagamento = FormaPagamento.Dinheiro;
             e.Id = int.Parse(form["id"]);
 

@@ -28,7 +28,7 @@ namespace ComandaEletronica.Models
             cmd.Parameters.AddWithValue("@dataAbertura", e.DataAbertura);
             cmd.Parameters.AddWithValue("@dataFechamento", e.DataFechamento);
             cmd.Parameters.AddWithValue("@valor", e.Valor);
-            cmd.Parameters.AddWithValue("@status", e.StatusConta);
+            cmd.Parameters.AddWithValue("@status", e.Status);
             cmd.Parameters.AddWithValue("@formaPagamento", e.FormaPagamento);
 
             cmd.ExecuteNonQuery();
@@ -76,9 +76,12 @@ namespace ComandaEletronica.Models
                 conta.Localizacao_id = (int)reader["Localizacao_id"];
                 conta.Cliente_id = (int)reader["Cliente_id"];
                 conta.DataAbertura = (DateTime)reader["DataAbertura"];
-                conta.DataFechamento = (DateTime)reader["DataFechamento"];
-                conta.Valor = (decimal)reader["Valor"];
-                conta.StatusConta = (StatusConta)reader["StatusConta"];
+                
+                // Permite nullo
+                conta.DataFechamento = (DateTime?)(reader["DataFechamento"] != DBNull.Value ? reader["DataFechamento"]:null);
+
+                conta.Valor = (decimal)(reader["Valor"]==DBNull.Value ?0.0m: reader["Valor"]);
+                conta.Status = (StatusConta)reader["Status"];
                 conta.FormaPagamento = (FormaPagamento)reader["FormaPagamento"];
 
 
@@ -113,7 +116,7 @@ namespace ComandaEletronica.Models
                 conta.DataAbertura = (DateTime)reader["DataAbertura"];
                 conta.DataFechamento = (DateTime)reader["DataFechamento"];
                 conta.Valor = (decimal)reader["Valor"];
-                conta.StatusConta = (StatusConta)reader["StatusConta"];
+                conta.Status = (StatusConta)reader["StatusConta"];
                 conta.FormaPagamento = (FormaPagamento)reader["FormaPagamento"];
                 
 
@@ -146,7 +149,7 @@ namespace ComandaEletronica.Models
                 conta.DataAbertura = (DateTime)reader["DataAbertura"];
                 conta.DataFechamento = (DateTime)reader["DataFechamento"];
                 conta.Valor = (decimal)reader["Valor"];
-                conta.StatusConta = (StatusConta)reader["Status"];
+                conta.Status = (StatusConta)reader["Status"];
                 conta.FormaPagamento = (FormaPagamento)reader["FormaPagamento"];
             }
 
@@ -171,7 +174,7 @@ namespace ComandaEletronica.Models
             cmd.Parameters.AddWithValue("@dataAbertura", e.DataAbertura);
             cmd.Parameters.AddWithValue("@dataFechamento", e.DataFechamento);
             cmd.Parameters.AddWithValue("@valor", e.Valor);
-            cmd.Parameters.AddWithValue("@status", e.StatusConta);
+            cmd.Parameters.AddWithValue("@status", e.Status);
             cmd.Parameters.AddWithValue("@formaPagamento", e.FormaPagamento);
             cmd.Parameters.AddWithValue("@id", e.Id);
 

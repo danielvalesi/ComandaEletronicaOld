@@ -59,7 +59,7 @@
                     {
                     <tr>
                         <td>@pedido.Id</td>
-                        <td>@pedido.ContaId</td>
+                        <td>@pedido.Conta_Id</td>
                         <td>@pedido.Status</td>
                         <td>@pedido.DataEntrega</td>
                         <td>
@@ -78,32 +78,7 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col m6">
-            <h2>Pedidos</h2>
-        </div>
-        <div class="col m6">
-            <br>
-            <br>
-            <a href="/pedido/create" class="btn right light-blue darken-3">Cadastrar pedido</a>
-        </div>
-    </div>
-    
-    <div class="row">
-        <form action="/pedido/filter" method="post" class="col m12">
-            <nav>
-                <div class="nav-wrapper">
-                 
-                        <div class="input-field">
-                            <input id="search" name="nome" type="search" placeholder="Pesquisar pelo nome..." required>
-                            <label for="search"><i class="material-icons">search</i></label>
-                            <i class="material-icons">close</i>
-                        </div>
-                  
-                </div>
-            </nav>
-        </form>
-    </div>
+
     
     
 

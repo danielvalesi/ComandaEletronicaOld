@@ -46,8 +46,8 @@ namespace ComandaEletronica.Controllers
         {
             Cliente e = new Cliente();
             e.Nome = form["nome"];
-            e.Descricao = form["descricao"];
-            e.Preco = decimal.Parse(form["preco"]);
+            e.Email = form["email"];
+            e.Cpf = form["cpf"];
 
 
 
@@ -74,11 +74,11 @@ namespace ComandaEletronica.Controllers
         {
             Cliente e = new Cliente();
             e.Nome = form["nome"];
-            e.Descricao = form["descricao"];
-            e.Preco = decimal.Parse(form["preco"]);
+            e.Email = form["email"];
+            e.Cpf = form["cpf"];
 
 
-            e.IdCliente = int.Parse(form["idCliente"]);
+            e.Id = int.Parse(form["pessoa_id"]);
 
 
             using (ClienteModel model = new ClienteModel())
@@ -94,10 +94,10 @@ namespace ComandaEletronica.Controllers
 
 
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int pessoa_id)
         {
             using (ClienteModel model = new ClienteModel())
-                model.Delete(id);
+                model.Delete(pessoa_id);
 
                 return RedirectToAction("Index");
         }

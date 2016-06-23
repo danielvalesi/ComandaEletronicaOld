@@ -60,16 +60,16 @@
                 @foreach (var cliente in Model)
             {
                     <tr>
-                        <td>@cliente.IdCliente</td>
+                        <td>@cliente.Pessoa_id</td>
                         <td>@cliente.Nome</td>
-                        <td>@cliente.Descricao</td>
-                        <td>@cliente.Preco</td>
+                        <td>@cliente.Email</td>
+                        <td>@cliente.Cpf</td>
                         <td>
                             <div class="btn-group">
-                                <a href="/cliente/update/@cliente.IdCliente" class="btn btn-xs btn-default">
+                                <a href="/cliente/update/@cliente.Pessoa_id" class="btn btn-xs btn-default">
                                     <span class="glyphicon glyphicon-edit"></span> Editar
                                 </a>
-                                <a href="/cliente/delete/@cliente.IdCliente" class="btn btn-xs btn-danger red darken-3">
+                                <a href="/cliente/delete/@cliente.Pessoa_id" class="btn btn-xs btn-danger red darken-3">
                                     <span class="glyphicon glyphicon-trash"></span> Apagar
                                 </a>
                             </div>

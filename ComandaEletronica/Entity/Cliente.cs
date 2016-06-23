@@ -7,9 +7,11 @@ using ComandaEletronica.Models;
 
 namespace ComandaEletronica.Entity
 {
-    public class Cliente : Pessoa
+    public class Cliente:Pessoa
     {
-        public string PorcentagemDesconto { get; set; }             
+        public int Pessoa_id { get; set; }
+
+        public decimal PorcentagemDesconto { get; set; }
 
     }
 }

@@ -60,7 +60,7 @@ namespace ComandaEletronica.Models
             {
                 Funcionario f = new Funcionario();
                 //funcionario.FuncionarioId = reader.GetInt32(0);
-                f.Pessoa_id = (int)reader["Id"];
+                f.Id = (int)reader["Id"];
                 f.Nome = (string)reader["Nome"];
                 f.Email = (string)reader["Email"];
                 f.Senha = (string)reader["Senha"];
@@ -94,7 +94,7 @@ namespace ComandaEletronica.Models
             {
                 Funcionario f = new Funcionario();
                 //funcionario.funcionarioId = reader.GetInt32(0);
-                f.Pessoa_id = (int)reader["Id"];
+                f.Id = (int)reader["Id"];
                 f.Nome = (string)reader["Nome"];
                 f.Email = (string)reader["Email"];
                 f.Senha = (string)reader["Senha"];
@@ -128,7 +128,7 @@ namespace ComandaEletronica.Models
 
             if (reader.Read())
             {
-                funcionario.Pessoa_id = (int)reader["Id"];
+                funcionario.Id = (int)reader["Id"];
                 funcionario.Nome = (string)reader["Nome"];
                 funcionario.Email = (string)reader["Email"];
                 funcionario.Senha = (string)reader["Senha"];
@@ -147,7 +147,7 @@ namespace ComandaEletronica.Models
                     UPDATE Funcionarios set
                     Nome = @nome, Email = @email, Senha = @senha
                     WHERE
-                    pessoa_id = @pessoa_id;
+                    id = @id;
             ";
 
             cmd.Parameters.AddWithValue("@nome", e.Nome);
@@ -165,10 +165,10 @@ namespace ComandaEletronica.Models
             cmd.CommandText = @"
                     DELETE from Funcionarios
                     WHERE
-                    pesso_id = @pessoa_id;
+                    id = @id;
             ";
 
-            cmd.Parameters.AddWithValue("@pessoa_id", idFuncionario);
+            cmd.Parameters.AddWithValue("@id", idFuncionario);
 
             cmd.ExecuteNonQuery();
 
@@ -195,7 +195,7 @@ namespace ComandaEletronica.Models
             {
                 f = new Funcionario();
                 //funcionario.funcionarioId = reader.GetInt32(0);
-                f.Pessoa_id = (int)reader["Id"];
+                f.Id = (int)reader["Id"];
                 f.Nome = (string)reader["Nome"];
                 f.Email = (string)reader["Email"];                
             }
