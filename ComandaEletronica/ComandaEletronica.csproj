@@ -194,6 +194,7 @@
     <Compile Include="Entity\Cliente.cs" />
     <Compile Include="Entity\Conta.cs" />
     <Compile Include="Entity\Localizacao.cs" />
+    <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Produto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

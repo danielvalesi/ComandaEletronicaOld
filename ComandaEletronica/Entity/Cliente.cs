@@ -7,22 +7,9 @@ using ComandaEletronica.Models;
 
 namespace ComandaEletronica.Entity
 {
-    public class Cliente
+    public class Cliente : Pessoa
     {
-        // campo:
-        private int idCliente;
-
-        // propriedades:
-        public int IdCliente
-        {
-            get { return idCliente; }
-            set { idCliente = value; }
-        }
-
-        public string PorcentagemDesconto { get; set; }        
-
-
-        }
+        public string PorcentagemDesconto { get; set; }             
 
     }
 }

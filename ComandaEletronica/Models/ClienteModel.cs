@@ -12,21 +12,19 @@ namespace ComandaEletronica.Models
     {
 
         // CADASTRAR Cliente
-        public void Create(Cliente e)
+        public void Create(Cliente c)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = @"
-                    INSERT INTO Cliente
-                    (Nome, Descricao, Preco)
-                    VALUES
-                    (@nome, @descricao, @preco)
-            ";
+            cmd.CommandText = "cadCliente";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@nome", e.Nome);
-            cmd.Parameters.AddWithValue("@descricao", e.Descricao);
-            cmd.Parameters.AddWithValue("@preco", e.Preco);
-
+            cmd.Parameters.AddWithValue("@nome", c.Nome);
+            cmd.Parameters.AddWithValue("@email", c.Email);
+            cmd.Parameters.AddWithValue("@senha", c.Senha);
+            cmd.Parameters.AddWithValue("@cpf", c.Cpf);
+            cmd.Parameters.AddWithValue("@imagem", c.Imagem);
+            cmd.Parameters.AddWithValue("@porcenatgemDesconto", e.PorcentagemDesconto);
 
             cmd.ExecuteNonQuery();
 
@@ -48,12 +46,13 @@ namespace ComandaEletronica.Models
             {
                 Cliente cliente = new Cliente();
                 //cliente.ClienteId = reader.GetInt32(0);
-                cliente.IdCliente = (int)reader["idCliente"];
-                cliente.Nome = (string)reader["Nome"];
-                cliente.Descricao = (string)reader["Descricao"];
-                cliente.Preco = (decimal)reader["Preco"];
-  
-
+                cliente.Pessoa_id                   = (int)reader["pessoa_id"];
+                cliente.Nome                        = (string)reader["nome"];
+                cliente.Email                       = (string)reader["email"];
+                cliente.Senha                       = (string)reader["senha"];
+                cliente.Cpf                         = (string)reader["cpf"];
+                cliente.Imagem                      = (string)reader["imagem"];
+                cliente.PorcentagemDesconto         = (decimal)reader["porcentagemDesconto"];
 
                 lista.Add(cliente);
             }
@@ -80,12 +79,15 @@ namespace ComandaEletronica.Models
             {
                 Cliente cliente = new Cliente();
                 //cliente.ClienteId = reader.GetInt32(0);
-                cliente.IdCliente = (int)reader["idCliente"];
-                cliente.Nome = (string)reader["Nome"];
-                cliente.Descricao = (string)reader["Descricao"];
-                cliente.Preco = (decimal)reader["Preco"];
+                cliente.Pessoa_id = (int)reader["pessoa_id"];
+                cliente.Nome = (string)reader["nome"];
+                cliente.Email = (string)reader["email"];
+                cliente.Senha = (string)reader["senha"];
+                cliente.Cpf = (string)reader["cpf"];
+                cliente.Imagem = (string)reader["imagem"];
+                cliente.PorcentagemDesconto = (decimal)reader["porcentagemDesconto"];
 
-                
+
 
                 lista.Add(cliente);
             }
@@ -110,10 +112,15 @@ namespace ComandaEletronica.Models
 
             if (reader.Read())
             {
-                cliente.IdCliente = (int)reader["idCliente"];
-                cliente.Nome = (string)reader["Nome"];
-                cliente.Descricao = (string)reader["Descricao"];
-                cliente.Preco = (decimal)reader["Preco"];
+                
+                //cliente.ClienteId = reader.GetInt32(0);
+                cliente.Pessoa_id = (int)reader["pessoa_id"];
+                cliente.Nome = (string)reader["nome"];
+                cliente.Email = (string)reader["email"];
+                cliente.Senha = (string)reader["senha"];
+                cliente.Cpf = (string)reader["cpf"];
+                cliente.Imagem = (string)reader["imagem"];
+                cliente.PorcentagemDesconto = (decimal)reader["porcentagemDesconto"];
             }
 
             return cliente;
@@ -160,7 +167,7 @@ namespace ComandaEletronica.Models
 
         }
 
-    public decimal gastos (int cliente)
+    /*public decimal gastos (int cliente)
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = conn;
@@ -181,5 +188,5 @@ namespace ComandaEletronica.Models
         // cmd.Parameters.AddWithValue("@idCliente", desconto);
         return 0;        
 
-    }
+    }*/
     }
