@@ -47,9 +47,10 @@ namespace ComandaEletronica.Controllers
             Cliente e = new Cliente();
             e.Nome = form["nome"];
             e.Email = form["email"];
+            e.Senha = form["senha"];
             e.Cpf = form["cpf"];
-
-
+            e.Imagem = form["imagem];
+            e.PorcentagemDesconto = form["porcentagemDesconto"];
 
             using (ClienteModel model = new ClienteModel())
             {
@@ -67,7 +68,6 @@ namespace ComandaEletronica.Controllers
         }
 
 
-
         //GET: /Cliente/update
         [HttpPost]
         public ActionResult Update(FormCollection form)
@@ -75,10 +75,13 @@ namespace ComandaEletronica.Controllers
             Cliente e = new Cliente();
             e.Nome = form["nome"];
             e.Email = form["email"];
+            e.Senha = form["senha"];
             e.Cpf = form["cpf"];
+            e.Imagem = form["imagem];
+            e.PorcentagemDesconto = form["porcentagemDesconto"];
 
 
-            e.Id = int.Parse(form["pessoa_id"]);
+            e.Pessoa_id = int.Parse(form["pessoa_id"]);
 
 
             using (ClienteModel model = new ClienteModel())
@@ -90,10 +93,6 @@ namespace ComandaEletronica.Controllers
         }
 
 
-
-
-
-
         public ActionResult Delete(int pessoa_id)
         {
             using (ClienteModel model = new ClienteModel())
@@ -102,5 +101,9 @@ namespace ComandaEletronica.Controllers
                 return RedirectToAction("Index");
         }
 
+    }
+
+    public class Controller
+    {
     }
 }
