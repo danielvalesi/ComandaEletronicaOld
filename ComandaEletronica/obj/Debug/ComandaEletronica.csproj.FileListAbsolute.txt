@@ -44,3 +44,4 @@ C:\Users\danie\Documents\Visual Studio 2015\Projects\ComandaEletronica\ComandaEl
 C:\Users\danie\Documents\Visual Studio 2015\Projects\ComandaEletronica\ComandaEletronica\bin\System.Web.Mvc.xml
 C:\Users\danie\Documents\Visual Studio 2015\Projects\ComandaEletronica\ComandaEletronica\obj\Debug\ComandaEletronica.dll
 C:\Users\danie\Documents\Visual Studio 2015\Projects\ComandaEletronica\ComandaEletronica\obj\Debug\ComandaEletronica.pdb
+C:\Users\Cintia\Documents\Visual Studio 2015\Projects\ComandaEletronica\ComandaEletronica\obj\Debug\ComandaEletronica.csprojResolveAssemblyReference.cache

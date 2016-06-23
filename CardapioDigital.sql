@@ -6,12 +6,12 @@ GO
 
 CREATE TABLE Pessoas
 (
-	id		int				not null primary key identity,
-	nome	varchar(50)		not null,
-	email	varchar(100)	not null unique,
-	senha	varchar(32)		not null,
-	cpf		varchar(16)		not null unique,
-	imagem	varchar(max)		null
+	pessoa_id	int				not null primary key identity,
+	nome		varchar(50)		not null,
+	email		varchar(100)	not null unique,
+	senha		varchar(32)		not null,
+	cpf			varchar(16)		not null unique,
+	imagem		varchar(max)		null
 )
 GO
 
@@ -20,7 +20,7 @@ CREATE TABLE ClientesVIP
 	pessoa_id				int				not null ,
 	porcentagemDesconto		decimal(4,2)	not null
 	primary key(pessoa_id),
-	foreign key(pessoa_id)	references Pessoas(id)
+	foreign key(pessoa_id)	references Pessoas(pessoa_id)
 )
 GO
 
@@ -29,10 +29,10 @@ CREATE TABLE Funcionarios
 	pessoa_id		int				not null primary key,
 	cargo			varchar(24)		not null,
 	salario			decimal(10,2)	not null,
-	horarioEntrada	datetime			null,
-	horarioSaida	datetime			null
+	horarioEntrada	time				null,
+	horarioSaida	time				null
 		
-	foreign key(pessoa_id)	references Pessoas(id)
+	foreign key(pessoa_id)	references Pessoas(pessoa_id)
 )
 GO
 
@@ -102,6 +102,60 @@ CREATE TABLE Itens
 	FOREIGN KEY(pedido_id) references Pedidos(id)
 )
 GO
+
+CREATE VIEW Usuarios
+AS
+    SELECT Pessoas.pessoa_id,  Pessoas.nome, Pessoas.email, Pessoas.Senha, Funcionarios.cargo,
+           IIF(Funcionarios.pessoa_id IS NULL, 'ClientesVIP', 'Funcionarios') AS Tipo
+    FROM Pessoas
+        LEFT JOIN Funcionarios ON Funcionarios.pessoa_id = Pessoas.pessoa_id
+        LEFT JOIN ClientesVIP ON ClientesVIP.pessoa_id = Pessoas.pessoa_id
+GO
+
+CREATE PROCEDURE cadCliente
+(
+	@nome					varchar(50),
+	@email					varchar(100),
+	@senha					varchar(32),
+	@cpf					varchar(16),
+	@imagem					varchar(max),
+	@porcentagemDesconto	decimal(4,2)
+
+)
+as 
+begin
+	INSERT INTO Pessoas VALUES (@nome, @email, @senha, @cpf, @imagem)
+
+	DECLARE @Id int
+	SET @Id = SCOPE_IDENTITY()
+
+	INSERT INTO ClientesVIP VALUES (@Id, @porcentagemDesconto)
+end
+
+CREATE PROCEDURE cadFuncionario
+(
+	@nome				varchar(50),
+	@email				varchar(100),
+	@senha				varchar(32),
+	@cpf				varchar(16),
+	@imagem				varchar(max),
+	
+	@cargo				varchar(24),
+	@salario			decimal(10,2),
+	@horarioEntrada		time,
+	@horarioSaida		time
+	
+)
+as 
+begin
+	INSERT INTO Pessoas VALUES (@nome, @email, @senha, @cpf, @imagem)
+
+	DECLARE @Id int
+	SET @Id = SCOPE_IDENTITY()
+
+	INSERT INTO Funcionarios VALUES (@Id, @cargo, @salario, @horarioEntrada, @horarioSaida)
+end
+
 
 INSERT INTO Localizacoes VALUES(4, 'mesa do fundo', 2)
 INSERT INTO Localizacoes VALUES(3, 'mesa do inicio', 1)
@@ -764,3 +818,8 @@ AS
 
 --Teste de Execução -
 select * from dadosClientes
+
+
+
+
+select * 

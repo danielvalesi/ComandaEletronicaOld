@@ -188,13 +188,13 @@
     <Compile Include="Controllers\ContaController.cs" />
     <Compile Include="Controllers\LocalizacaoController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
-    <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Item.cs" />
     <Compile Include="Entity\Pedido.cs" />
     <Compile Include="Entity\Funcionario.cs" />
     <Compile Include="Entity\Cliente.cs" />
     <Compile Include="Entity\Conta.cs" />
     <Compile Include="Entity\Localizacao.cs" />
+    <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Produto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

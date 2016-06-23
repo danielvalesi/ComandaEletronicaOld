@@ -12,21 +12,19 @@ namespace ComandaEletronica.Models
     {
 
         // CADASTRAR Cliente
-        public void Create(Cliente e)
+        public void Create(Cliente c)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText = @"
-                    INSERT INTO ClientesVIP
-                    (Nome, Email, Cpf)
-                    VALUES
-                    (@nome, @email, @cpf)
-            ";
+            cmd.CommandText = "cadCliente";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@nome", e.Nome);
-            cmd.Parameters.AddWithValue("@email", e.Email);
-            cmd.Parameters.AddWithValue("@cpf", e.Cpf);
-
+            cmd.Parameters.AddWithValue("@nome", c.Nome);
+            cmd.Parameters.AddWithValue("@email", c.Email);
+            cmd.Parameters.AddWithValue("@senha", c.Senha);
+            cmd.Parameters.AddWithValue("@cpf", c.Cpf);
+            cmd.Parameters.AddWithValue("@imagem", c.Imagem);
+            cmd.Parameters.AddWithValue("@porcenatgemDesconto", e.PorcentagemDesconto);
 
             cmd.ExecuteNonQuery();
 
@@ -39,7 +37,7 @@ namespace ComandaEletronica.Models
             List<Cliente> lista = new List<Cliente>();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "select * from ClientesVIP, Pessoas WHERE Pessoas.id = ClientesVIP.pessoa_id";
+            cmd.CommandText = "select * from Clientes";
             cmd.Connection = conn;
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -48,12 +46,13 @@ namespace ComandaEletronica.Models
             {
                 Cliente cliente = new Cliente();
                 //cliente.ClienteId = reader.GetInt32(0);
-                cliente.Pessoa_id = (int)reader["Pessoa_id"];
-                cliente.Nome = (string)reader["Nome"];
-                cliente.Email = (string)reader["Email"];
-                cliente.Cpf = (string)reader["Cpf"];
-
-
+                cliente.Pessoa_id                   = (int)reader["pessoa_id"];
+                cliente.Nome                        = (string)reader["nome"];
+                cliente.Email                       = (string)reader["email"];
+                cliente.Senha                       = (string)reader["senha"];
+                cliente.Cpf                         = (string)reader["cpf"];
+                cliente.Imagem                      = (string)reader["imagem"];
+                cliente.PorcentagemDesconto         = (decimal)reader["porcentagemDesconto"];
 
                 lista.Add(cliente);
             }
@@ -69,7 +68,7 @@ namespace ComandaEletronica.Models
             List<Cliente> lista = new List<Cliente>();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = @"select * from ClientesVIP where Nome like @nome";
+            cmd.CommandText = @"select * from Cliente where Nome like @nome";
             cmd.Connection = conn;
 
             cmd.Parameters.AddWithValue("@nome", "%" + nome + "%");
@@ -81,9 +80,12 @@ namespace ComandaEletronica.Models
                 Cliente cliente = new Cliente();
                 //cliente.ClienteId = reader.GetInt32(0);
                 cliente.Pessoa_id = (int)reader["pessoa_id"];
-                cliente.Nome = (string)reader["Nome"];
-                cliente.Email = (string)reader["Email"];
-                cliente.Cpf = (string)reader["Cpf"];
+                cliente.Nome = (string)reader["nome"];
+                cliente.Email = (string)reader["email"];
+                cliente.Senha = (string)reader["senha"];
+                cliente.Cpf = (string)reader["cpf"];
+                cliente.Imagem = (string)reader["imagem"];
+                cliente.PorcentagemDesconto = (decimal)reader["porcentagemDesconto"];
 
 
 
@@ -96,24 +98,29 @@ namespace ComandaEletronica.Models
 
         // BUSCA POR ID
 
-        internal Cliente Read(int id)
+        internal Cliente Read(int idCliente)
         {
             Cliente cliente = new Cliente();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = @"select * from Cliente, Pessoas where cliente.id = @id AND pessoa.id = cliente.id";
+            cmd.CommandText = @"select * from Cliente where IdCliente = @idCliente";
             cmd.Connection = conn;
 
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@idCliente", idCliente);
 
             SqlDataReader reader = cmd.ExecuteReader();
 
             if (reader.Read())
             {
+                
+                //cliente.ClienteId = reader.GetInt32(0);
                 cliente.Pessoa_id = (int)reader["pessoa_id"];
-                cliente.Nome = (string)reader["Nome"];
-                cliente.Email = (string)reader["Email"];
-                cliente.Cpf = (string)reader["Cpf"];
+                cliente.Nome = (string)reader["nome"];
+                cliente.Email = (string)reader["email"];
+                cliente.Senha = (string)reader["senha"];
+                cliente.Cpf = (string)reader["cpf"];
+                cliente.Imagem = (string)reader["imagem"];
+                cliente.PorcentagemDesconto = (decimal)reader["porcentagemDesconto"];
             }
 
             return cliente;
@@ -126,37 +133,60 @@ namespace ComandaEletronica.Models
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = @"
-                    UPDATE ClientesVIP set
-                    Nome = @nome, Email = @email, Cpf = @cpf
+                    UPDATE Cliente set
+                    Nome = @nome, Descricao = @descricao, Preco = @preco
                     WHERE
-                    pessoa_id = @pessoa_id;
+                    idCliente = @idCliente;
             ";
 
             cmd.Parameters.AddWithValue("@nome", e.Nome);
-            cmd.Parameters.AddWithValue("@email", e.Email);
-            cmd.Parameters.AddWithValue("@cpf", e.Cpf);
-            cmd.Parameters.AddWithValue("@id", e.Id);
+            cmd.Parameters.AddWithValue("@descricao", e.Descricao);
+            cmd.Parameters.AddWithValue("@preco", e.Preco);
+            cmd.Parameters.AddWithValue("@idCliente", e.IdCliente);
 
             cmd.ExecuteNonQuery();
 
         }
 
         // APAGAR CLIENTE
-        public void Delete (int id)
+        public void Delete (int idCliente)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = @"
-                    DELETE from ClientesVIP
+                    DELETE from Cliente
                     WHERE
-                    id = @id;
+                    idCliente = @idCliente;
             ";
 
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@idCliente", idCliente);
 
             cmd.ExecuteNonQuery();
 
         }
 
         }
+
+    /*public decimal gastos (int cliente)
+    {
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = conn;
+        cmd.CommandText = @"select	sum(co.valor)	Gastos
+
+                            from Pessoas p, ClientesVIP c, Contas co
+
+                            where	p.id = c.pessoa_id and
+		                    c.pessoa_id = co.cliente_id and
+                            c.dataFechamento is not null
+
+                            group by c.pessoa_id, p.nome";
+        SqlDataReader reader = cmd.ExecuteReader();
+        if (reader.Read())
+        {
+            return (decimal)reader["Gastos"];
+        }
+        // cmd.Parameters.AddWithValue("@idCliente", desconto);
+        return 0;        
+
+    }*/
     }

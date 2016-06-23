@@ -1,31 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ComandaEletronica.Models;
+using System.Web;
 
 namespace ComandaEletronica.Entity
 {
     public class Pessoa
     {
-        // campo:
-        private int id;
-
-        // propriedades:
-        public int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
+        public int Pessoa_id { get; set; }
         public string Nome { get; set; }
-
         public string Email { get; set; }
-
         public string Senha { get; set; }
-
         public string Cpf { get; set; }
-
+        public string Imagem { get; set; }
+        public string Tipo { get; set; }
     }
 }
