@@ -7,7 +7,14 @@ namespace ComandaEletronica.Entity
 {
     public class Pessoa
     {
-        public int Pessoa_id { get; set; }
+        private int pessoa_id;
+
+        public int Pessoa_id
+        {
+            get { return pessoa_id; }
+            set { IDictionary = value; }
+        }
+        
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
