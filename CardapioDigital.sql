@@ -155,7 +155,69 @@ begin
 
 	INSERT INTO Funcionarios VALUES (@Id, @cargo, @salario, @horarioEntrada, @horarioSaida)
 end
+--cadCliente 'Gustavo', 'gustavo@email.com', 'senha', '123.123.123-12', null, 0.02
+CREATE PROCEDURE alterCliente
+(
+	@pessoa_id				int,
+	@nome					varchar(50),
+	@email					varchar(100),
+	@senha					varchar(32),
+	@cpf					varchar(16),
+	@imagem					varchar(max),
+	@porcentagemDesconto	decimal(4,2)
 
+)
+as 
+begin
+	update Pessoas set
+		nome = @nome,
+		email = @email,
+		senha = @senha,
+		cpf = @cpf,
+		imagem = @imagem
+	WHERE
+		pessoa_id = @pessoa_id
+
+	update ClientesVIP set
+		porcentagemDesconto = @porcentagemDesconto
+	WHERE
+		pessoa_id = @pessoa_id
+end
+
+CREATE PROCEDURE alterFuncionario
+(
+	@pessoa_id				int,
+	@nome					varchar(50),
+	@email					varchar(100),
+	@senha					varchar(32),
+	@cpf					varchar(16),
+	@imagem					varchar(max),
+	
+	@cargo					varchar(24),
+	@salario				decimal(10,2),
+	@horarioEntrada			time,
+	@horarioSaida			time
+
+)
+as 
+begin
+	update Pessoas set
+		nome	= @nome,
+		email	= @email,
+		senha	= @senha,
+		cpf		= @cpf,
+		imagem	= @imagem
+	WHERE
+		pessoa_id = @pessoa_id
+
+	update Funcionarios set
+		cargo			= @cargo,
+		salario			= @salario,
+		horarioEntrada	= @horarioEntrada,
+		horarioSaida	= @horarioSaida
+	WHERE
+		pessoa_id = @pessoa_id
+end
 
 INSERT INTO Localizacoes VALUES(4, 'mesa do fundo', 2)
 INSERT INTO Localizacoes VALUES(3, 'mesa do inicio', 1)
@@ -321,12 +383,12 @@ where p.id = f.pessoa_id
 INSERT INTO Localizacoes VALUES(4, 'mesa do fundo', 1)
 INSERT INTO Localizacoes VALUES(3, 'mesa do inicio', 1)
 INSERT INTO Localizacoes VALUES(3, 'mesa do meio', 1)
-
+go
 --Tabela Produtos --
 INSERT INTO Produtos VALUES ('Água Mineral', 2.00, 'Água mineral da marca X', 0, null, 0, 15)
 INSERT INTO Produtos VALUES ('coca-cola', 4.50, 'refrigerante sabor cola da marca coca cola', 0, null, 0, 10)
 INSERT INTO Produtos VALUES ('lanche de cheddar', 25.50, 'lanche de hamburguer, cebola caramelizada e cheddar', 1, null, 30, null)
-
+go
 --Tabela Pessoas --
 INSERT INTO Pessoas	VALUES('Gustavo',   'gustavo@gmail.com',   '654321', '111.111.111-11', null)
 INSERT INTO Pessoas	VALUES('Diogo',     'diogo@gmail.com',     '654321', '222.222.222-22', null)
@@ -334,32 +396,32 @@ INSERT INTO Pessoas	VALUES('Daniel',    'daniel@gmail.com',    '654321', '333.33
 INSERT INTO Pessoas	VALUES('Fulano',    'Fulano@gmail.com',    '654321', '444.444.444-44', null)
 INSERT INTO Pessoas	VALUES('Ciclano',   'Ciclano@gmail.com',   '654321', '555.555.555-55', null)
 INSERT INTO Pessoas	VALUES('Beltrano',  'Beltrano@gmail.com',  '654321', '666.666.666-66', null)
-
+go
 --Tabela ClientesVIP --
 INSERT INTO ClientesVIP VALUES(1, 0.2)
 INSERT INTO ClientesVIP VALUES(2, 0.2)
 INSERT INTO ClientesVIP VALUES(3, 0.2)
-
+go
 --Tabela Funcionario --
 INSERT INTO Funcionarios VALUES(4, 'Garçom', 1000.00, GETDATE(), NULL)
 INSERT INTO Funcionarios VALUES(5, 'Cozinheiro', 1220.00, GETDATE(), NULL)
 INSERT INTO Funcionarios VALUES(6, 'Gerente', 2000.00, GETDATE(), NULL)
-
+go
 --Tabela Contas --
 INSERT INTO Contas VALUES(1, 2, getdate(), null, 0, null, null)
 INSERT INTO Contas VALUES(2, null, getdate(), null, 0, null, null)
 INSERT INTO Contas VALUES(3, 1, getdate(), null, 0, null, null)
-
+go
 --Tabela Pedidos --
 INSERT INTO Pedidos VALUES(1, 0, GETDATE())
 INSERT INTO Pedidos VALUES(2, 1, GETDATE())
 INSERT INTO Pedidos VALUES(3, 0, GETDATE())
-
+go
 --Tabela Itens --
 INSERT INTO Itens VALUES(1, 4, 1, 1, 2.00, null, 0)
 INSERT INTO Itens VALUES(2, 4, 2, 2, 9.00, null, 0)
 INSERT INTO Itens VALUES(3, 4, 3, 3, 76.50, null, 0)
-
+go
 
 
 
