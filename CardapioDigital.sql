@@ -68,7 +68,7 @@ CREATE TABLE Contas
 	dataFechamento	datetime		null,
 	status			int			not null,
 	valor			decimal(15,2)	null,
-	formaPagamento	int			not null
+	formaPagamento	int				null
 
 	PRIMARY KEY(id),
 	foreign key(localizacao_id) references Localizacoes(numero),
@@ -218,6 +218,9 @@ begin
 	WHERE
 		pessoa_id = @pessoa_id
 end
+
+alterFuncionario 2, 'fulano', 'emmasddasdmail', 'saiuh', '11ishdasdasds-11', 'imagem.png', 'Gerente', 1000.00, '12:00:00', '18:00:00' 
+
 
 INSERT INTO Localizacoes VALUES(4, 'mesa do fundo', 2)
 INSERT INTO Localizacoes VALUES(3, 'mesa do inicio', 1)
