@@ -49,7 +49,7 @@ namespace ComandaEletronica.Controllers
             e.Email = form["email"];
             e.Senha = form["senha"];
             e.Cpf = form["cpf"];
-            e.Imagem = form["imagem];
+            e.Imagem = form["imagem"];
             e.PorcentagemDesconto = form["porcentagemDesconto"];
 
             using (ClienteModel model = new ClienteModel())
@@ -77,7 +77,7 @@ namespace ComandaEletronica.Controllers
             e.Email = form["email"];
             e.Senha = form["senha"];
             e.Cpf = form["cpf"];
-            e.Imagem = form["imagem];
+            e.Imagem = form["imagem"];
             e.PorcentagemDesconto = form["porcentagemDesconto"];
 
 
