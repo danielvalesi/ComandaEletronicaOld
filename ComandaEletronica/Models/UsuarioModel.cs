@@ -7,7 +7,7 @@ using ComandaEletronica.Entity;
 
 namespace ComandaEletronica.Models
 {
-    public class UsuarioModel:Model
+    public class UsuarioModel : Model
     {
         internal Pessoa Read(string email, string senha)
         {

@@ -118,19 +118,22 @@ CREATE PROCEDURE cadCliente
 	@email					varchar(100),
 	@senha					varchar(32),
 	@cpf					varchar(16),
-	@imagem					varchar(max),
-	@porcentagemDesconto	decimal(4,2)
+	@imagem					varchar(max)
 
 )
 as 
 begin
 	INSERT INTO Pessoas VALUES (@nome, @email, @senha, @cpf, @imagem)
-
+	
+	DECLARE @Desconto decimal(4,2)
+	SET @Desconto = 0.00
 	DECLARE @Id int
 	SET @Id = SCOPE_IDENTITY()
 
-	INSERT INTO ClientesVIP VALUES (@Id, @porcentagemDesconto)
+	INSERT INTO ClientesVIP VALUES (@Id, @Desconto)
 end
+select * from Pessoas p, ClientesVIP c
+where p.pessoa_id = c.pessoa_id
 
 CREATE PROCEDURE cadFuncionario
 (
